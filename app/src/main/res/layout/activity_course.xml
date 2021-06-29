@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+   <data>
+      <variable
+          name="course"
+          type="com.shagii.loginmvvm.viewmodel.CourseViewModel" />
+   </data>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:id="@+id/cl1"
+       android:layout_width="match_parent"
+       android:layout_height="200dp"
+       android:background="@drawable/b1"
+       tools:context=".CourseActivity">
+
+      <TextView
+          android:id="@+id/txt1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="15dp"
+          android:text="Welcome To New Courses"
+          android:textSize="20sp"
+          android:textStyle="bold"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.165"
+          app:layout_constraintStart_toStartOf="parent"
+          tools:ignore="MissingConstraints"
+          tools:layout_editor_absoluteY="39dp"></TextView>
+
+      <SearchView
+          android:layout_width="300dp"
+          android:layout_height="wrap_content"
+          android:background="@color/teal_700"
+          android:gravity="right|left"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:ignore="MissingConstraints"></SearchView>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/cl2"
+    android:layout_below="@+id/cl1">
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="   Courses for You"
+       android:textSize="20sp"
+       tools:ignore="MissingConstraints"></TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_below="@+id/cl2">
+      <androidx.recyclerview.widget.RecyclerView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/rv_courses"
+          tools:listitem="@layout/course_list"
+          tools:ignore="MissingConstraints">
+
+      </androidx.recyclerview.widget.RecyclerView>
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
+</layout>
