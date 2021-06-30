@@ -23,6 +23,7 @@ import java.util.List;
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseItemHolder> {
     Context mCtx;
     List<Course> mCourseList;
+    public String course,desc;
     public CourseAdapter(Context mCtx) {
         this.mCtx = mCtx;
     }
@@ -39,6 +40,18 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseItem
     @Override
     public void onBindViewHolder(@NonNull @NotNull CourseItemHolder holder, int position) {
         holder.bind(mCourseList.get(position));
+        holder.mBinding.cv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), CourseCardViewItemsDetails.class);
+                course=mCourseList.get(position).getCourseEn().toString();
+                desc=mCourseList.get(position).getDiscription().toString();
+                i.putExtra("courseN", course);
+                i.putExtra("desc", desc);
+                v.getContext().startActivity(i);
+
+            }
+        });
     }
 
     @Override
@@ -56,15 +69,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseItem
 
          if (mBinding.getItemCourse() == null) {
              mBinding.setItemCourse(new ItemCourseViewModel(itemView.getContext(), course));
-             itemView.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-                     Intent i = new Intent(v.getContext(), CourseCardViewItemsDetails.class);
-                     i.putExtra("Title",mBinding.getItemCourse().getCourseEn().toString());
-                     v.getContext().startActivity(i);
 
-                 }
-             });
          } else {
              mBinding.getItemCourse().setCourseList(course);
          }
